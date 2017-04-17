@@ -1,0 +1,6 @@
+Supervisord cookbook
+====================
+
+This cookbook installs
+[Supervisord](http://supervisord.org/configuration.html) and provides
+a resource to supervise programs.
