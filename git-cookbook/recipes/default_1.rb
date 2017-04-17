@@ -14,6 +14,9 @@
 include_recipe 'poise-python'
 include_recipe 'apt::default'
 python_runtime '2'
+
+Chef::Log.info "Var from AWS consolde #{node[:test_var]}"
+
 application '/srv/flask_test_2' do
 	git 'https://github.com/vineethpkr/test_flask.git'
 	pip_requirements
@@ -21,5 +24,3 @@ application '/srv/flask_test_2' do
     	port 5000
   	end
 end
-
-
