@@ -16,7 +16,7 @@ end
 #   version '1.8'
 # end
 
-application '/srv/social_tab' do
+application '/srv/settings' do
   #virtualenv
   git "#{node[:settings][:repository_name]}" do
     deploy_key "#{node[:settings][:deploy_key]}"
