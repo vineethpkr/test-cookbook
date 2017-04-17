@@ -2,7 +2,7 @@
 #   command "sudo easy_install supervisor"
 #   #command "echo_supervisord_conf > /etc/supervisord.conf"
 # end
-include_recipe 'poise_monit::default'
+include_recipe 'poise-monit::default'
 
 
 poise_service 'supervisor_settings' do
