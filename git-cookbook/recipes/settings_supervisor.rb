@@ -2,17 +2,25 @@
 #   command "sudo easy_install supervisor"
 #   #command "echo_supervisord_conf > /etc/supervisord.conf"
 # end
-include_recipe 'poise-monit::default'
+#include_recipe 'poise-monit::default'
 
+python_runtime '2'
+python_virtualenv '/.virtualenvs/settings/'
 
-poise_service 'supervisor_settings' do
-  command '/.virtualenvs/settings/bin/gunicorn /srv/settings/manage:app --bind 0.0.0.0:8000'
-  stop_signal 'WINCH'
-  reload_signal 'USR1'
-  provider :monit
-  #options :monit, checks: 'if failed host localhost port 80 protocol HTTP request "/" then restart'
+application '/srv/settings' do
+  gunicorn do
+    port 8003
+  end
 end
 
+
+# poise_service 'supervisor_settings' do
+#   command '/.virtualenvs/settings/bin/gunicorn /srv/settings/manage:app --bind 0.0.0.0:8000'
+#   stop_signal 'WINCH'
+#   reload_signal 'USR1'
+#   provider :monit
+#   #options :monit, checks: 'if failed host localhost port 80 protocol HTTP request "/" then restart'
+# end
 
 # supervisord_program "app" do
 #   command "/.virtualenvs/settings/bin/gunicorn manage:app --bind 0.0.0.0:8000"
