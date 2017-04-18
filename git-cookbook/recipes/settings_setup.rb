@@ -23,4 +23,7 @@ application '/srv/settings' do
     revision "#{node[:settings][:revision]}"
   end
   pip_requirements
+	gunicorn do
+		port 5691
+	end
 end
