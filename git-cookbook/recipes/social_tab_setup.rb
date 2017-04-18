@@ -23,7 +23,9 @@ application '/srv/social_tab' do
     revision "#{node[:social_tab][:revision]}"
   end
   pip_requirements
-	gunicorn do
-		port 8090
-	end
+end
+
+execute 'guni' do
+	cwd '/srv/social_tab/falcon_manager'
+	command '/.virtualenvs/social_tab/bin/gunicorn config:app --bind 0.0.0.0:8090'
 end
