@@ -24,3 +24,9 @@ application '/srv/settings' do
   end
   pip_requirements
 end
+
+# Start
+execute 'guni' do
+	cwd '/srv/settings'
+	command '/.virtualenvs/settings/bin/gunicorn manage:app --bind 0.0.0.0:8000 --daemon'
+end

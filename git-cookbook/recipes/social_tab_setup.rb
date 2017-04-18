@@ -27,5 +27,5 @@ end
 
 execute 'guni' do
 	cwd '/srv/social_tab_3'
-	command '/.virtualenvs/social_tab_3/bin/gunicorn falcon_manager.config:app --bind 0.0.0.0:8090'
+	command '/.virtualenvs/social_tab_3/bin/gunicorn falcon_manager.config:app --bind 0.0.0.0:8090 --daemon'
 end
