@@ -5,7 +5,7 @@
 #include_recipe 'poise-monit::default'
 
 python_runtime '2'
-python_virtualenv '/.virtualenvs/settings/'
+#python_virtualenv '/.virtualenvs/settings/'
 
 application '/srv/settings' do
   gunicorn do

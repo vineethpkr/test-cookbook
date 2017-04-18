@@ -14,12 +14,10 @@
 include_recipe 'poise-python'
 include_recipe 'apt::default'
 python_runtime '2'
-application '/srv/flask_test' do
-	git 'https://github.com/poise/test_flask.git'
-	pip_requirements
-	gunicorn do
-    	port 9001
-  	end
-end
-
-
+# application '/srv/flask_test' do
+# 	git 'https://github.com/poise/test_flask.git'
+# 	pip_requirements
+# 	gunicorn do
+#     	port 9001
+#   	end
+# end
