@@ -4,10 +4,10 @@ include_recipe 'apt::default'
 #include_recipe 'supervisord'
 # include_recipe 'gunicorn'
 
-python_runtime '2'
-python_virtualenv '/.virtualenvs/social_tab/'
+python_runtime '3'
+python_virtualenv '/.virtualenvs/social_tab_3/'
 
-directory '/.virtualenvs/social_tab/' do
+directory '/.virtualenvs/social_tab_3/' do
 	mode '777'
 	action :create
 end
@@ -16,7 +16,7 @@ end
 #   version '1.8'
 # end
 
-application '/srv/social_tab' do
+application '/srv/social_tab_3' do
   #virtualenv
   git "#{node[:social_tab][:repository_name]}" do
     deploy_key "#{node[:settings][:deploy_key]}"
