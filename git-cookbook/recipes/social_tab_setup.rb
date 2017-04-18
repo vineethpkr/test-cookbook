@@ -23,4 +23,7 @@ application '/srv/social_tab' do
     revision "#{node[:social_tab][:revision]}"
   end
   pip_requirements
+	gunicorn do
+		port 8090
+	end
 end
