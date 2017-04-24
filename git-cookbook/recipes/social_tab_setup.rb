@@ -25,7 +25,17 @@ application '/srv/social_tab_3' do
   pip_requirements
 end
 
-execute 'guni' do
-	cwd '/srv/social_tab_3'
-	command '/.virtualenvs/social_tab_3/bin/gunicorn falcon_manager.config:app --bind 0.0.0.0:8090 --daemon'
-end
+
+template "/etc/monit.d/social_tab.monitrc" do 
+      owner 'root' 
+      group 'root' 
+      mode 0700
+      source "social_tab.monitrc.erb" 
+    end
+
+
+
+# execute 'guni' do
+# 	cwd '/srv/social_tab_3'
+# 	command '/.virtualenvs/social_tab_3/bin/gunicorn falcon_manager.config:app --bind 0.0.0.0:8090 --daemon'
+# end
