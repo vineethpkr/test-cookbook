@@ -16,14 +16,14 @@ end
 #   version '1.8'
 # end
 
-application '/srv/social_tab_3' do
-  #virtualenv
-  git "#{node[:social_tab][:repository_name]}" do
-    deploy_key "#{node[:settings][:deploy_key]}"
-    revision "#{node[:social_tab][:revision]}"
-  end
-  pip_requirements
-end
+# application '/srv/social_tab_3' do
+#   #virtualenv
+#   git "#{node[:social_tab][:repository_name]}" do
+#     deploy_key "#{node[:settings][:deploy_key]}"
+#     revision "#{node[:social_tab][:revision]}"
+#   end
+#   pip_requirements
+# end
 
 
 template "/etc/monit.d/social_tab.monitrc" do 
