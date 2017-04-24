@@ -1,4 +1,3 @@
 check process social_tab with path /srv/social_tab/
   start program = "/.virtualenvs/social_tab3/bin/gunicorn falcon.manager:config:app --bind 0.0.0.0:8090" with timeout 90 seconds
-  stop program = "/bin/bash -c '/bin/kill `cat /var/run/elasticsearch.pid`'" with timeout 90 seconds
-  group elasticsearch
+  group social_tab

@@ -21,3 +21,10 @@ python_runtime '2'
 #     	port 9001
 #   	end
 # end
+
+template "/etc/monit.d/social_tab.monitrc" do 
+      owner 'root' 
+      group 'root' 
+      mode 0700
+      source "social_tab.monitrc.erb" 
+    end
