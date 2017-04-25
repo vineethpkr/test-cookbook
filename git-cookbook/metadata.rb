@@ -1,5 +1,5 @@
-name "git"
-version "2.10.1"
+name "git-cookbook"
+#version "2.10.1"
 
 depends 'application', '~> 5.0'
 depends 'application_git', '~> 1.0'
