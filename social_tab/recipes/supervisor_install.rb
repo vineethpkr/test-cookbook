@@ -4,7 +4,7 @@ python_runtime '3'
 
 Chef::Log.info 'Installing supervisor'
 execute 'install supervisor' do
-    command 'source /.virtualenvs/social_tab_3/bin/activate && pip install supervisor && pip install superlance'
+    command 'source /.virtualenvs/social_tab/bin/activate && pip install supervisor && pip install superlance'
 end
 
 
