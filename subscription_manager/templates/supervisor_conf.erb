@@ -28,7 +28,7 @@ startsecs=2
 [program:gnip_manager]
 process_name=web_app
 directory=/srv/gnip_manager/
-command = /.virtualenvs/subscription_manager/bin/gunicorn main:app --bind 0.0.0.0:8090
+command = /.virtualenvs/subscription_manager/bin/gunicorn main:app --bind 0.0.0.0:9090
 autorestart=true
 startsecs=2
 # do change the upstream module in nginx when the number of processes is changed
@@ -36,7 +36,7 @@ startsecs=2
 [program:twitter_dm_manager]
 process_name=web_app
 directory=/srv/twitter_dm_manager/
-command = /.virtualenvs/subscription_manager/bin/gunicorn main:app --bind 0.0.0.0:8090
+command = /.virtualenvs/subscription_manager/bin/gunicorn main:app --bind 0.0.0.0:8080
 autorestart=true
 startsecs=2
 # do change the upstream module in nginx when the number of processes is changed
