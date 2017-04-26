@@ -7,6 +7,19 @@ long_description 'Installs/Configures ns_models'
 version '0.1.0'
 chef_version '>= 12.1' if respond_to?(:chef_version)
 
+depends 'application', '~> 5.0'
+depends 'application_git', '~> 1.0'
+# depends 'application_javascript', '~> 1.0'
+depends 'application_python', '~> 4.0'
+# depends ‘application_ruby’, ‘~> 4.0’
+# depends ‘build-essential’
+depends 'poise', '~> 2.0'
+depends 'poise-python'
+depends 'poise-archive', '~> 1.3'
+depends 'apt', '~> 6.1.0'
+depends 'supervisord'
+depends 'poise-monit'
+
 # The `issues_url` points to the location where issues for this cookbook are
 # tracked.  A `View Issues` link will be displayed on this cookbook's page when
 # uploaded to a Supermarket.

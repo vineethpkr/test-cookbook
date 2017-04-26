@@ -15,11 +15,11 @@ end
 # python_package 'Django' do
 #   version '1.8'
 # end
+# Yum dependencies
 yum_package 'gcc'
 yum_package 'libffi-devel'
 yum_package 'python-devel'
 yum_package 'openssl-devel'
-
 
 # execute 'install deps' do
 #   command 'sudo yum install gcc libffi-devel python-devel openssl-devel'
