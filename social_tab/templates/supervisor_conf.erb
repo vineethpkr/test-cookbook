@@ -20,7 +20,7 @@ serverurl=unix:///tmp/supervisor.sock ; use a unix:// URL  for a unix socket
 [program:social_tab]
 process_name=web_app
 directory=/srv/social_tab/
-command = /.virtualenvs/social_tab_3/bin/gunicorn main:app --bind 0.0.0.0:8090
+command = /.virtualenvs/social_tab_3/bin/gunicorn falcon_manager.config:app --bind 0.0.0.0:8090
 autorestart=true
 startsecs=2
 # do change the upstream module in nginx when the number of processes is changed

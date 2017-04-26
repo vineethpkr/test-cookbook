@@ -1,10 +1,10 @@
-python_runtime '3'
-#python_virtualenv '/.virtualenvs/settings/'
+python_runtime '2'
+python_virtualenv '/.virtualenvs/social_tab_gunicorn/'
 
 
 Chef::Log.info 'Installing supervisor'
 execute 'install supervisor' do
-    command 'source /.virtualenvs/social_tab/bin/activate && pip install supervisor && pip install superlance'
+    command 'source /.virtualenvs/social_tab_gunicorn/bin/activate && pip install supervisor && pip install superlance'
 end
 
 
