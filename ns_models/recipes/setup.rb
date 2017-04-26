@@ -7,6 +7,12 @@ include_recipe 'apt::default'
 python_runtime '2'
 python_virtualenv '/.virtualenvs/ns_models/'
 
+yum_package 'gcc'
+yum_package 'libffi-devel'
+yum_package 'python-devel'
+yum_package 'openssl-devel'
+
+
 directory '/.virtualenvs/ns_models/' do
 	mode '777'
 	action :create

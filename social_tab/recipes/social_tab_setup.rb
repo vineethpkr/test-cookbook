@@ -12,6 +12,12 @@ directory '/.virtualenvs/social_tab_3/' do
 	action :create
 end
 
+
+yum_package 'gcc'
+yum_package 'libffi-devel'
+yum_package 'python-devel'
+yum_package 'openssl-devel'
+
 # python_package 'Django' do
 #   version '1.8'
 # end
