@@ -18,6 +18,10 @@ directory '/.virtualenvs/ns_models/' do
 	action :create
 end
 
+execute 'access' do
+	command 'sudo chmod -R 777 /.virtualenvs/noise_api/'
+end
+
 # python_package 'Django' do
 #   version '1.8'
 # end

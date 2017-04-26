@@ -18,6 +18,9 @@ directory '/.virtualenvs/noise_api/' do
 	action :create
 end
 
+execute 'access' do
+	command 'sudo chmod -R 777 /.virtualenvs/noise_api/'
+end
 # python_package 'Django' do
 #   version '1.8'
 # end
@@ -29,4 +32,9 @@ application '/srv/noise_api' do
     revision "#{node[:noise_api][:revision]}"
   end
   pip_requirements
+end
+
+# Adding logs folder
+execute 'add logs' do
+	command 'sudo mkdir /srv/noise_api/logs && sudo chmod -R 777 /srv/noise_api/logs/'
 end
