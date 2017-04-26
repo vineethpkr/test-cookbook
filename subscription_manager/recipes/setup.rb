@@ -16,6 +16,10 @@ end
 #   version '1.8'
 # end
 
+execute 'install deps' do
+  command 'sudo yum install gcc libffi-devel python-devel openssl-devel'
+end
+
 Chef::Log.info "Installing the facebook manager"
 application '/srv/facebook_manager' do
   #virtualenv
