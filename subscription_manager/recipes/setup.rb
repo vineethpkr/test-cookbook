@@ -16,11 +16,34 @@ end
 #   version '1.8'
 # end
 
-application '/srv/subscription_manager' do
+Chef::Log.info "Installing the facebook manager"
+application '/srv/facebook_manager' do
   #virtualenv
-  git "#{node[:subscription_manager][:repository_name]}" do
+  git "#{node[:subscription_manager][:facebook_manager][:repository_name]}" do
     deploy_key "#{node[:settings][:deploy_key]}"
-    revision "#{node[:subscription_manager][:revision]}"
+    revision "#{node[:subscription_manager][:facebook_manager][:revision]}"
+  end
+  pip_requirements
+end
+
+
+Chef::Log.info "Installing the GNIP manager"
+application '/srv/gnip_manager' do
+  #virtualenv
+  git "#{node[:subscription_manager][:gnip_manager][:repository_name]}" do
+    deploy_key "#{node[:settings][:deploy_key]}"
+    revision "#{node[:subscription_manager][:gnip_manager][:revision]}"
+  end
+  pip_requirements
+end
+
+
+Chef::Log.info "Installing the Twitter DM manager"
+application '/srv/twitter_dm_manager' do
+  #virtualenv
+  git "#{node[:subscription_manager][:twitter_dm_manager][:repository_name]}" do
+    deploy_key "#{node[:settings][:deploy_key]}"
+    revision "#{node[:subscription_manager][:twitter_dm_manager][:revision]}"
   end
   pip_requirements
 end
