@@ -1,10 +1,10 @@
 python_runtime '2'
-#python_virtualenv '/.virtualenvs/settings/'
+python_virtualenv '/.virtualenvs/supervisor_env/'
 
 
 Chef::Log.info 'Installing supervisor'
 execute 'install supervisor' do
-    command 'source /.virtualenvs/subscription_manager/bin/activate && pip install supervisor && pip install superlance'
+    command 'source /.virtualenvs/supervisor_env/bin/activate && pip install supervisor && pip install superlance'
 end
 
 

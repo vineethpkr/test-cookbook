@@ -4,7 +4,7 @@ include_recipe 'apt::default'
 #include_recipe 'supervisord'
 # include_recipe 'gunicorn'
 
-python_runtime '2'
+python_runtime '3'
 python_virtualenv '/.virtualenvs/subscription_manager/'
 
 directory '/.virtualenvs/subscription_manager/' do
