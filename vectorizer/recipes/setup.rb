@@ -34,10 +34,10 @@ end
 application '/srv/veritaserum' do
 	git "git@github.com:airwoot/veritaserum.git" do
 		deploy_key "#{node[:settings][:deploy_key]}"
+		revision "dev"
 	end
 end
 
 execute 'install verita' do
 	command 'python setup.py install'
 end
-
