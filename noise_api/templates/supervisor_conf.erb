@@ -19,8 +19,8 @@ serverurl=unix:///tmp/supervisor.sock ; use a unix:// URL  for a unix socket
 
 [program:noise_api]
 process_name=web_app
-directory=/srv/noise_api/
-command = /.virtualenvs/noise_api/bin/gunicorn main:app --bind 0.0.0.0:8090
+directory=/srv/noise_api/src/
+command = /.virtualenvs/noise_api/bin/gunicorn app:main_api --bind 0.0.0.0:8090
 autorestart=true
 startsecs=2
 # do change the upstream module in nginx when the number of processes is changed

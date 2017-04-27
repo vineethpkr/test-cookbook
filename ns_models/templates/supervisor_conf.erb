@@ -19,8 +19,8 @@ serverurl=unix:///tmp/supervisor.sock ; use a unix:// URL  for a unix socket
 
 [program:ns_models]
 process_name=app
-directory=/srv/ns_models/
-command = /.virtualenvs/ns_models/bin/gunicorn main:app --bind 0.0.0.0:8090
+directory=/srv/ns_models/local_service/
+command = /.virtualenvs/ns_models/bin/gunicorn local:api --bind 0.0.0.0:8090
 autorestart=true
 startsecs=2
 # do change the upstream module in nginx when the number of processes is changed
