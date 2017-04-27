@@ -39,5 +39,5 @@ application '/srv/veritaserum' do
 end
 
 execute 'install verita' do
-	command 'python setup.py install'
+	command 'sudo chmod -R 777 /srv/veritaserum/ && cd /srv/veritaserum/ && python setup.py install'
 end
