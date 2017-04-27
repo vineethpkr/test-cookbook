@@ -29,3 +29,15 @@ application '/srv/vectorizer' do
   end
   pip_requirements
 end
+
+# Install veritaserum
+application '/srv/veritaserum' do
+	git "git@github.com:airwoot/veritaserum.git" do
+		deploy_key "#{node[:settings][:deploy_key]}"
+	end
+end
+
+execute 'install verita' do
+	command 'python setup.py install'
+end
+
