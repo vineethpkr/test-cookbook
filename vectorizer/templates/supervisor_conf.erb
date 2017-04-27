@@ -19,8 +19,8 @@ serverurl=unix:///tmp/supervisor.sock ; use a unix:// URL  for a unix socket
 
 [program:vectorizer]
 process_name=app
-directory=/srv/vectorizer/
-command = /.virtualenvs/vectorizer/bin/gunicorn main:app --bind 0.0.0.0:8090
+directory=/srv/vectorizer/vectorizer/
+command = /.virtualenvs/vectorizer/bin/gunicorn vectorizer:api --bind 0.0.0.0:8090
 autorestart=true
 startsecs=2
 # do change the upstream module in nginx when the number of processes is changed
