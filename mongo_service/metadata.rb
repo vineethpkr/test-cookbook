@@ -12,7 +12,7 @@ depends 'application_git', '~> 1.0'
 # depends 'application_javascript', '~> 1.0'
 depends 'application_python', '~> 4.0'
 # depends ‘application_ruby’, ‘~> 4.0’
-# depends ‘build-essential’
+depends ‘build-essential’
 depends 'poise', '~> 2.0'
 depends 'poise-python'
 depends 'poise-archive', '~> 1.3'
@@ -21,6 +21,7 @@ depends 'supervisord'
 depends 'poise-monit'
 depends 'sc-mongodb'
 depends 'yum'
+depends 'python'
 
 # The `issues_url` points to the location where issues for this cookbook are
 # tracked.  A `View Issues` link will be displayed on this cookbook's page when
