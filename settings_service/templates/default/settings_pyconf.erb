@@ -1,0 +1,21 @@
+# -*- coding: utf-8 -*-
+"""Contains different configurations.
+These configurations can be passed on to the application factories
+to create Flask application instances with different configurations.
+"""
+class MainConfig(object):
+    APP_NAME = 'settings'
+    SECRET_KEY = 's3cr3t'
+    POSTGRES_USERNAME = 'postgres'
+    POSTGRES_PORT = 5432
+    POSTGRES_PASSWORD = 'password'
+    POSTGRES_HOST = 'freshsocial-staging.cayba3x1onxx.us-east-1.rds.amazonaws.com'
+    POSTGRES_DB_NAME = 'development_25'
+    BOWHEAD_ENDPOINT = 'http://54.254.232.91:5000'
+    BOWHEAD_DM_ENDPOINT = 'http://54.254.232.91:7000'
+    BOWHEAD_FB_ENDPOINT = 'http://54.254.232.91:8000'
+
+
+class DebugConfig(MainConfig):
+# 	"""Staging config"""
+    DEBUG = True

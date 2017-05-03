@@ -38,6 +38,13 @@ template '/etc/staging_config.json' do
 	mode '0755'
 end
 
+template '/srv/settings/settings/config.py' do
+	source 'settings_pyconf.erb'
+	owner 'root'
+	group 'root'
+	mode '0755'
+end
+
 # # Start
 # execute 'guni' do
 # 	cwd '/srv/settings'
