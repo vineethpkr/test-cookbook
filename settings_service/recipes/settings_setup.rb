@@ -30,6 +30,14 @@ application '/srv/settings' do
   pip_requirements
 end
 
+
+template '/etc/staging_config.json' do
+	source 'settings_config.erb'
+	owner 'root'
+	group 'root'
+	mode '0755'
+end
+
 # # Start
 # execute 'guni' do
 # 	cwd '/srv/settings'
