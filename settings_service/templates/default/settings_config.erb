@@ -1,0 +1,11 @@
+{
+	"POSTGRES_USERNAME": <%= node['datastore']['username'] %>,
+	"POSTGRES_PORT": 5432,
+	"POSTGRES_PASSWORD": <%= node['datastore']['password'] %>,
+	"POSTGRES_HOST": <%= node['datastore']['host'] %>,
+	"POSTGRES_DB_NAME": <%= node['datastore']['db_name'] %>,
+	"BOWHEAD_ENDPOINT": <%= node['bowhead']['host'] %>,
+	"BOWHEAD_DM_ENDPOINT": <%= node['bowhead']['dm_host'] %>,
+	"BOWHEAD_FB_ENDPOINT": <%= node['bowhead']['fb_host'] %>
+
+}
