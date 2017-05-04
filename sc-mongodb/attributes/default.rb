@@ -50,7 +50,7 @@ default['mongodb']['dbconfig_file_template'] = 'mongodb.conf.erb'
 default['mongodb']['dbconfig_file'] = '/etc/mongodb.conf'
 
 default['mongodb']['package_name'] = 'mongodb'
-default['mongodb']['package_version'] = '3.2'
+default['mongodb']['package_version'] = '3.4'
 
 default['mongodb']['default_init_name'] = 'mongodb'
 default['mongodb']['instance_name'] = 'mongodb'
