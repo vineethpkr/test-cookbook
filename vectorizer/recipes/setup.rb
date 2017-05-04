@@ -30,6 +30,13 @@ application '/srv/vectorizer' do
   pip_requirements
 end
 
+template "/srv/vectorizer/Utils/config.py" do
+  source "vectorizer_conf.erb"
+  owner "root"
+  group "root"
+  mode "0755"
+end
+
 # Install veritaserum
 application '/srv/veritaserum' do
 	git "git@github.com:airwoot/veritaserum.git" do
@@ -39,5 +46,5 @@ application '/srv/veritaserum' do
 end
 
 execute 'install verita' do
-	command 'sudo chmod -R 777 /srv/veritaserum/ && cd /srv/veritaserum/ && python setup.py install'
+	command 'sudo chmod -R 777 /srv/veritaserum/ && cd /srv/veritaserum/ && pip install -e .'
 end

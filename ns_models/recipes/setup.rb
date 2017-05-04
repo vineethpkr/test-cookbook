@@ -34,3 +34,10 @@ application '/srv/ns_models' do
   end
   pip_requirements
 end
+
+template "/srv/ns_models/Utils/config.py" do
+  source "ns_models_conf.erb"
+  owner "root"
+  group "root"
+  mode "0755"
+end

@@ -1,0 +1,28 @@
+# Instance path
+VECTORIZER_INSTANCE="<%= node['ml']['vectorizer_host'] %>"
+
+# Mongo DB path
+COLLECTION_NAME='NoiseCancellation'
+
+# Redis DB settings 
+REDIS_HOST="<%= node['redis']['host'] %>"
+REDIS_PORT=6379
+W2V_DB_INSTANCE=0
+SALT_DB_INSTANCE=2
+
+# Path for vectorizer stuff 
+FILE_PATH='../Utils/'
+W_FNAME='W.pkl'
+WORD_IDX_MAP_FNAME='word_idx_map.pkl'
+WORD2VEC_FNAME="GoogleNews-vectors-negative300.bin"
+TRAINING_DATASET="nc2_training_data_equal_sampling.pkl"
+SALT_FILE="salt_dictionary_with_constants.pkl"
+VECTOR_SIZE=300
+HOW_MANY=-1
+RANDOM_SEED=1
+DATASET_FILE_EXTENSION='.csv'
+FLUSHDB=True
+S3_BUCKET_NAME='nc-configs'
+
+# plot paths 
+PLOTS_PATH="../plots/"
