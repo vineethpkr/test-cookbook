@@ -35,7 +35,7 @@ end
 template "/srv/social_tab/falcon_manager/db_config.py" do 
       owner 'root' 
       group 'root' 
-      mode 0755
+      mode "0755"
       source "social_tab_db_config.erb" 
     end
 

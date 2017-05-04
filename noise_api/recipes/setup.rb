@@ -34,7 +34,16 @@ application '/srv/noise_api' do
   pip_requirements
 end
 
+template "/srv/noise_api/Utils/config.py" do
+  source "noise_api_conf.erb"
+  owner "root"
+  group "root"
+  mode "0755"
+end
+
+
 # Adding logs folder
 execute 'add logs' do
 	command 'sudo mkdir /srv/noise_api/logs && sudo chmod -R 777 /srv/noise_api/logs/'
 end
+

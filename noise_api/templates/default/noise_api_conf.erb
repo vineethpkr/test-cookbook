@@ -1,0 +1,56 @@
+MODEL_PATH='../models/'
+GLOBAL_MODEL_FILE='global_model.pkl'
+
+# Instance path
+LOCAL_INSTANCE="<%= node['ml']['local_model'] %>"
+GLOBAL_INSTANCE="<%= node['ml']['global_model'] %>"
+VECTORIZER_INSTANCE="<%= node['ml']['vectorizer_host'] %>"
+
+# Mongo DB path
+MONGO_DB_HOST= "<%= node['mongo']['host'] %>"
+MONGO_DB_PORT=27017
+DB_NAME='ML'
+COLLECTION_NAME='NoiseCancellation'
+DYNAMO_DB_TABLE_NAME='nc_prediction_db'
+
+# Redis DB settings 
+REDIS_HOST= "<%= node['redis']['host'] %>"
+REDIS_PORT=6379
+DB_INSTANCE=0
+LOCAL_MODEL_DB_INSTANCE=1
+
+# Prediction Constants 
+NOISE_LABEL=0
+ACTIONABLE_LABEL=1
+UNDECIDABLE_LABEL=2
+MARK_AS_SPAM=1
+MARK_AS_TICKET=2
+
+# MODEL SETTINGS
+PREDICTION_C=1.0
+THRESHOLD=0.0
+EPSILON=0.001
+UPDATION_C=1.0
+
+# MODEL SETTINGS INDEXES
+INDEX_INTERCEPT=0
+INDEX_COEF_LOWER=1
+INDEX_COEF_UPPER=301
+INDEX_PREDICTION_C=302
+INDEX_THRESHOLD=303
+INDEX_EPSILON=304
+INDEX_UPDATION_C=305
+                                                                     
+# Path for vectorizer stuff 
+FILE_PATH='../models/'
+W_FNAME='W.pkl'
+WORD_IDX_MAP_FNAME='word_idx_map.pkl'
+WORD2VEC_FNAME="GoogleNews-vectors-negative300.bin"
+TRAINING_DATASET="training_dataset.csv"
+VECTOR_SIZE=300
+HOW_MANY=-1
+RANDOM_SEED=1
+DATASET_FILE_EXTENSION='.csv'
+
+# plot paths 
+PLOTS_PATH="../plots/"
