@@ -32,12 +32,12 @@ application '/srv/social_tab' do
 end
 
 
-# template "/etc/monit.d/social_tab.monitrc" do 
-#       owner 'root' 
-#       group 'root' 
-#       mode 0700
-#       source "social_tab.monitrc.erb" 
-#     end
+template "/srv/social_tab/falcon_manager/db_config.py" do 
+      owner 'root' 
+      group 'root' 
+      mode 0755
+      source "social_tab_db_config.erb" 
+    end
 
 
 
