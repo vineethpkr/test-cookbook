@@ -1,0 +1,23 @@
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import create_engine
+
+
+# REDIS
+REDIS_HOST = "<%= node['redis']['host'] %>"
+REDIS_PORT = 6379
+
+# Twitter application keys
+CONSUMER_KEY = ''
+CONSUMER_SECRET = ''
+
+# Kafka Topics
+KAFKA_HOST = "<%= node['kafka']['host'] %>"
+KAFKA_TOPIC_RECEIVED_DM = "<%= node['kafka']['twitter_dm_topic'] %>"
+KAFKA_TOPIC_SENT_DM = "<%= node['kafka']['twitter_dm_sync_topic'] %>"
+
+# POSTGRES
+POSTGRES_URL = 'postgresql+psycopg2://tanay:@localhost/dm_bowhead_1'
+
+# SQLAlchemy Base
+engine = create_engine(POSTGRES_URL)
+ORMBase = declarative_base(bind=engine)

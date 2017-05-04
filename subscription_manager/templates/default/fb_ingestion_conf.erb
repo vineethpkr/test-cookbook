@@ -1,0 +1,52 @@
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+'''
+Kafka Configuration
+'''
+KAFKA_HOST = "<%= node['kafka']['host'] %>"
+KAFKA_TOPIC_CALLBACK = "<%= node['kafka']['fb_callback_topic'] %>"
+KAFKA_TOPIC_TAGGED_POSTS = "<%= node['kafka']['fb_tagged_post_topic'] %>"
+
+'''
+Facebook GraphAPI configuration
+'''
+VERIFY_TOKEN_WEBHOOK = "<%= node['facebook_webhook_token'] %>"
+
+
+'''
+Postgres
+'''
+engine = create_engine('postgresql+psycopg2://tanay:@localhost/fb_bowhead')
+Base = declarative_base(bind=engine)
+
+
+class DatabaseSessionManager:
+    """
+    SQLAlchemy session management
+    Provide a transactional scope around a series of REST API operations.
+    """
+
+    def __init__(self, engine):
+        self.engine = engine
+        self.Session = sessionmaker(bind=engine)
+        pass
+
+    def process_request(self, req, resp):
+        """
+        Process request when it routes to an endpoint.
+        """
+        req.db_session = self._session_factory()
+
+    def process_response(self, req, resp, resource):
+        """
+        Handle post-processing of the response (after routing).
+        """
+        session = req.db_session
+        session.close()
+
+    def _session_factory(self):
+        """Create new instances of Session using sessionmaker"""
+        session = self.Session()
+        return session

@@ -1,0 +1,21 @@
+'''
+Configuration file for gnip-ingestion framework
+'''
+
+# GNIP Authentication credentials
+USERNAME = "<%= node['gnip']['username'] %>"
+PASSWORD = "<%= node['gnip']['password'] %>"
+GNIP_URL = "https://gnip-stream.twitter.com/stream/powertrack/accounts/Freshdesk/publishers/twitter/dev.json"
+
+GNIP_RULE_URL = "https://gnip-api.twitter.com/rules/powertrack/accounts/Freshdesk/publishers/twitter/dev.json"
+CHUNKSIZE = 2048  # Size of chunk to read from GNIP Connection
+GNIPKEEPALIVE = 30  # seconds
+
+# re-connection strategy for GNIP Powertrack
+DELAY_MAX = 150
+DELAY_MIN = 0.1
+DELAY_FACTOR = 1.5
+
+# Kafka config
+KAFKA_HOST = "<%= node['kafka']['host'] %>"
+KAFKA_TOPIC = "<%= node['kafka']['twitter_gnip_topic'] %>"

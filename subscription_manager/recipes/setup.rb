@@ -35,6 +35,14 @@ application '/srv/facebook_manager' do
   pip_requirements
 end
 
+Chef::Log.info "Overwriting the config file for facebook manager"
+template '/srv/facebook_manager/config.py' do
+  source 'fb_ingestion_conf.erb'
+  owner 'root'
+  group 'root'
+  mode '0755'
+end
+
 
 Chef::Log.info "Installing the GNIP manager"
 application '/srv/gnip_manager' do
@@ -46,6 +54,14 @@ application '/srv/gnip_manager' do
   pip_requirements
 end
 
+Chef::Log.info "Overwriting the config file for GNIP manager"
+template '/srv/gnip_manager/config.py' do
+  source 'gnip_ingestion_conf.erb'
+  owner 'root'
+  group 'root'
+  mode '0755'
+end
+
 
 Chef::Log.info "Installing the Twitter DM manager"
 application '/srv/twitter_dm_manager' do
@@ -55,4 +71,12 @@ application '/srv/twitter_dm_manager' do
     revision "#{node[:subscription_manager][:twitter_dm_manager][:revision]}"
   end
   pip_requirements
+end
+
+Chef::Log.info "Overwriting the config file for Twitter DM manager"
+template '/srv/twitter_dm_manager/app_config.py' do
+  source 'twitter_dm_ingestion_conf.erb'
+  owner 'root'
+  group 'root'
+  mode '0755'
 end
