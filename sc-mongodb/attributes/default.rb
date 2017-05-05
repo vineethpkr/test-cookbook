@@ -39,8 +39,8 @@ default['mongodb']['auto_configure']['sharding'] = true
 default['mongodb']['configserver_url'] = nil
 
 default['mongodb']['root_group'] = 'root'
-default['mongodb']['user'] = 'mongodb'
-default['mongodb']['group'] = 'mongodb'
+default['mongodb']['user'] = 'mongod' | 'mongodb'
+default['mongodb']['group'] = 'mongod' | 'mongodb'
 
 default['mongodb']['init_dir'] = '/etc/init.d'
 default['mongodb']['init_script_template'] = 'debian-mongodb.init.erb'
