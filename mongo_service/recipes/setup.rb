@@ -1,3 +1,3 @@
-include_recipe "mongodb3::default"
+include_recipe "sc-mongodb::default"
 
 Chef::Log.info "Installing MongoDB"

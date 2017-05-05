@@ -50,7 +50,7 @@ default['mongodb']['dbconfig_file_template'] = 'mongodb.conf.erb'
 default['mongodb']['dbconfig_file'] = '/etc/mongodb.conf'
 
 default['mongodb']['package_name'] = 'mongodb'
-default['mongodb']['package_version'] = nil
+default['mongodb']['version'] = '3.4'
 
 default['mongodb']['default_init_name'] = 'mongodb'
 default['mongodb']['instance_name'] = 'mongodb'
@@ -103,7 +103,7 @@ when 'rhel', 'fedora'
   if node['platform'] == 'centos' || node['platform'] == 'amazon'
     Chef::Log.warn("CentOS doesn't provide mongodb, forcing use of mongodb-org repo")
     default['mongodb']['install_method'] = 'mongodb-org'
-    default['mongodb']['package_name'] = 'mongodb-org-3.2'
+    default['mongodb']['package_name'] = 'mongodb-org'
   end
 when 'debian'
   if node['platform'] == 'ubuntu'
