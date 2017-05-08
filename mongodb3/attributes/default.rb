@@ -105,7 +105,7 @@ default['mongodb3']['config']['mongod']['systemLog']['component']['geo']['verbos
 default['mongodb3']['config']['mongod']['systemLog']['component']['index']['verbosity'] = nil # default : 0
 default['mongodb3']['config']['mongod']['systemLog']['component']['network']['verbosity'] = nil # default : 0
 default['mongodb3']['config']['mongod']['systemLog']['component']['query']['verbosity'] = nil # default : 0
-default['mongodb3']['config']['mongod']['systemLog']['component']['replication']['verbosity'] = nil # default : 0
+default['mongodb3']['config']['mongod']['systemLog']['component']['replication']['verbosity'] = 3 # default : 0
 default['mongodb3']['config']['mongod']['systemLog']['component']['sharding']['verbosity'] = nil # default : 0
 default['mongodb3']['config']['mongod']['systemLog']['component']['storage']['verbosity'] = nil # default : 0
 default['mongodb3']['config']['mongod']['systemLog']['component']['storage']['journal']['verbosity'] = nil # default : 0
