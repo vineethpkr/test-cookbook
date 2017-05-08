@@ -19,10 +19,10 @@ depends 'poise-archive', '~> 1.3'
 depends 'apt', '~> 6.1.0'
 depends 'supervisord'
 depends 'poise-monit'
-depends 'sc-mongodb'
+#depends 'sc-mongodb'
 depends 'yum'
 depends 'python'
-#depends 'mongodb3'
+depends 'mongodb3'
 
 # The `issues_url` points to the location where issues for this cookbook are
 # tracked.  A `View Issues` link will be displayed on this cookbook's page when
