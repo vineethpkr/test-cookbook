@@ -3,8 +3,8 @@
 # Libraries:: helpers
 #
 # Author: Joshua Timberman <joshua@chef.io>
-# Author: Sean OMeara <sean@sean.io>
-# Copyright 2008-2016, Chef Software, Inc. <legal@chef.io>
+# Author: Sean OMeara <sean@chef.io>
+# Copyright 2008-2015, Chef Software, Inc. <legal@chef.io>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,10 +21,11 @@
 
 module RunitCookbook
   module Helpers
+
     # include Chef::Mixin::ShellOut if it is not already included in the calling class
     def self.included(klass)
-      unless klass.ancestors.include?(Chef::Mixin::ShellOut)
-        klass.class_eval { include Chef::Mixin::ShellOut }
+      unless(klass.ancestors.include?(Chef::Mixin::ShellOut))
+        klass.class_eval{ include Chef::Mixin::ShellOut }
       end
     end
 
@@ -49,6 +50,12 @@ module RunitCookbook
       '/etc/init.d'
     end
 
+    # misc helper functions
+    def inside_docker?
+      results = `cat /proc/1/cgroup`.strip.split("\n")
+      results.any? { |val| /docker/ =~ val }
+    end
+
     def down_file
       "#{sv_dir_name}/down"
     end
@@ -59,7 +66,7 @@ module RunitCookbook
 
     def extra_env_files?
       files = []
-      Dir.glob("#{sv_dir_name}/env/*").each do |f|
+      Dir.glob("#{service_dir_name}/env/*").each do |f|
         files << File.basename(f)
       end
       return true if files.sort != new_resource.env.keys.sort
@@ -67,7 +74,7 @@ module RunitCookbook
     end
 
     def zap_extra_env_files
-      Dir.glob("#{sv_dir_name}/env/*").each do |f|
+      Dir.glob("#{service_dir_name}/env/*").each do |f|
         unless new_resource.env.key?(File.basename(f))
           File.unlink(f)
           Chef::Log.info("removing file #{f}")
@@ -76,10 +83,12 @@ module RunitCookbook
     end
 
     def wait_for_service
-      sleep 1 until ::FileTest.pipe?("#{service_dir_name}/supervise/ok")
+      unless inside_docker?
+        sleep 1 until ::FileTest.pipe?("#{service_dir_name}/supervise/ok")
 
-      if new_resource.log
-        sleep 1 until ::FileTest.pipe?("#{service_dir_name}/log/supervise/ok")
+        if new_resource.log
+          sleep 1 until ::FileTest.pipe?("#{service_dir_name}/log/supervise/ok")
+        end
       end
     end
 
@@ -144,21 +153,13 @@ module RunitCookbook
     def default_logger_content
       <<-EOS
 #!/bin/sh
-exec svlogd -tt #{new_resource.log_dir}
+exec svlogd -tt /var/log/#{new_resource.service_name}
       EOS
     end
 
     def disable_service
       shell_out("#{new_resource.sv_bin} #{sv_args}down #{service_dir_name}")
       FileUtils.rm(service_dir_name)
-
-      # per the documentation, a service should be removed from supervision
-      # within 5 seconds of removing the service dir symlink, so we'll sleep for 6.
-      # otherwise, runit recreates the 'ok' named pipe too quickly
-      sleep(6)
-      # runit will recreate the supervise directory and
-      # pipes when the service is reenabled
-      FileUtils.rm("#{sv_dir_name}/supervise/ok")
     end
 
     def start_service
@@ -182,9 +183,7 @@ exec svlogd -tt #{new_resource.log_dir}
     end
 
     def reload_log_service
-      if log_running?
-        shell_out!("#{new_resource.sv_bin} #{sv_args}force-reload #{service_dir_name}/log")
-      end
+      shell_out!("#{new_resource.sv_bin} #{sv_args}force-reload #{service_dir_name}/log")
     end
   end
 end
